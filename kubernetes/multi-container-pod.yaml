@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: multi-container
+  lables:
+    name: multi-container
+    purpose: multi-container pod demo
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  - name: alpine
+    image: alpine      
