@@ -98,6 +98,7 @@ spec:
       containers:
         - name: frontend
           image: prenay/frontend:v1
+          imagePullPolicy: Always
           volumeMounts:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
