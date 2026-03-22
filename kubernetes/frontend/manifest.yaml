@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: prenay/frontend
+          image: prenay/frontend:v1
           ports:
             - containerPort: 80
 ---
