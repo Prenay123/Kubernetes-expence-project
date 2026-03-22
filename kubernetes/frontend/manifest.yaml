@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-conf
+  namesapace: expence
+  labels:
+    component: frontend
+    project: expence
+    tire: web
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namesapace: expence
+  labels:
+    component: frontend
+    project: expence
+    tire: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: frontend
+      project: expence
+      tier: web
+  template:
+    metadata:
+      labels:
+        component: frontend
+        project: expence
+        tier: web
+    spec:
+      containers:
+      - name: frontend
+        image: prenay/frontend
+---
+apiVersion: v1
+kind: service
+metadata:
+  name: frontend
+  namesapace: expence
+  labels:
+    component: frontend
+    project: expence
+    tier: web
+spec:
+  type: LoadBalancer
+  selector:
+    component: frontend
+    project: expence
+    tier: web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80  
